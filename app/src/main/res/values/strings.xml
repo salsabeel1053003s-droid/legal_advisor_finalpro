@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Legal AI Advisor</string>
+    <string name="header_title">LEGAL AI ADVISOR</string>
+
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Reliable legal solutions powered by AI</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="create_account">Create Account</string>
+    <string name="register_title">CREATE ACCOUNT</string>
+    <string name="register_subtitle">Join our AI legal community today</string>
+    <string name="hint_email">Email Address</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="btn_register">SIGN UP</string>
+    <string name="already_have_account">Already have an account? Login</string>
+
+    <string name="forgot_title">RESET PASSWORD</string>
+    <string name="forgot_subtitle">Enter your email to receive a recovery code</string>
+    <string name="btn_send">SEND CODE</string>
+    <string name="back_to_login">Back to Login</string>
+
+    <string name="welcome_back">Welcome Back</string>
+    <string name="user_name">Legal Explorer</string>
+    <string name="loading_date">Loading date</string>
+    <string name="card_ai_title">AI Advisor</string>
+    <string name="card_human_title">Human Expert</string>
+    <string name="card_contact_title">Contact Us</string>
+    <string name="card_settings_title">Settings</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_notifications">Notifications</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="account_section">Account</string>
+    <string name="preferences_section">Preferences</string>
+    <string name="edit_profile_photo">Customize Profile Photo</string>
+    <string name="edit_username">Edit Display Name</string>
+    <string name="change_password">Change Password</string>
+    <string name="notifications_inbox">Inbox Notifications</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="logout_button">LOGOUT</string>
+
+    <string name="title_notifications">Notifications</string>
+    <string name="desc_back">Back</string>
+    <string name="desc_notification_settings">Notification Settings</string>
+    <string name="notify_new_update">New Update Available</string>
+    <string name="notify_update_desc">Update the app to get the latest AI legal features.</string>
+    <string name="notify_time_now">Now</string>
+    <string name="notify_login_success">Login Successful</string>
+    <string name="notify_login_desc">A new login was detected from an Android device.</string>
+    <string name="notify_time_yesterday">Yesterday</string>
+
+    <string name="title_contact">Contact Us</string>
+    <string name="contact_subtitle">We are here to help you 24/7</string>
+    <string name="section_social">Social Media</string>
+    <string name="section_email">Email Support</string>
+    <string name="section_phone">Technical Support</string>
+    <string name="contact_email_address">support@legalai.com</string>
+    <string name="contact_phone_number">+1 800 555 0199</string>
+    <string name="btn_call_now">Call Now</string>
+    <string name="btn_send_email">Send Message</string>
+    <string name="desc_fb">Facebook</string>
+    <string name="desc_tw">Twitter</string>
+    <string name="desc_wa">WhatsApp</string>
+    <string name="desc_ig">Instagram</string>
+
+    <string name="title_human_experts">Legal Consultants</string>
+    <string name="expert_1_name">Dr. Alexander Wright</string>
+    <string name="expert_1_bio">Corporate Law Specialist - 15 years exp.</string>
+    <string name="expert_2_name">Sarah Jenkins</string>
+    <string name="expert_2_bio">Family &amp; Civil Law Expert.</string>
+    <string name="expert_3_name">Michael O\'Connell</string>
+    <string name="expert_3_bio">Criminal Defense &amp; Human Rights.</string>
+    <string name="btn_contact_expert">Contact Expert</string>
+
+    <string name="error_empty_fields">Please fill all fields</string>
+    <string name="msg_logging_in">Logging in</string>
+    <string name="msg_email_sent">Recovery email sent!</string>
+    <string name="toast_ai">Opening AI Advisor</string>
+    <string name="toast_human">Connecting to Human Expert</string>
+    <string name="toast_contact">Redirecting to Contact</string>
+    <string name="error_settings">Settings page not found</string>
+    <string name="msg_dark_mode_on">Dark Mode Enabled</string>
+    <string name="msg_dark_mode_off">Light Mode Enabled</string>
+</resources>

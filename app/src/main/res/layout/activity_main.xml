@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_background"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <!-- Dark Overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_overlay" />
+
+    <!-- Main Scroll Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btnMenu"
+                    android:layout_centerVertical="true"
+                    android:text="@string/header_title"
+                    android:textColor="@color/neon_blue"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:letterSpacing="0.2" />
+
+                <ImageButton
+                    android:id="@+id/btnMenu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_more"
+                    app:tint="@color/neon_blue"
+                    android:contentDescription="@string/header_title" />
+            </RelativeLayout>
+
+            <!-- Welcome Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/welcome_back"
+                android:textColor="@color/text_gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray"
+                android:layout_marginBottom="30dp"
+                android:text="@string/loading_date" />
+
+            <!-- Grid Cards -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins">
+
+                <!-- Reusable Card Template -->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardAI"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/stat_notify_chat"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/card_ai_title"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardHuman"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/card_human_title"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardFavorites"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/btn_star_big_on"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/menu_favorites"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardNotifications"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/ic_popup_reminder"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/menu_notifications"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContact"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/ic_menu_call"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/card_contact_title"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardSettings"
+                    style="@style/NeonCardStyle">
+
+                    <LinearLayout
+                        style="@style/NeonCardContent"
+                        android:background="@drawable/neon_card_bg">
+
+                        <ImageView
+                            android:src="@android:drawable/ic_menu_manage"
+                            style="@style/NeonIconStyle"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:text="@string/card_settings_title"
+                            style="@style/NeonTextStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Menu Overlay -->
+    <View
+        android:id="@+id/menuOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Popup Menu -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/menuContainer"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/menuFavoritesItem"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/menu_favorites"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="?attr/selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/menuNotificationsItem"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/menu_notifications"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="?attr/selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/menuSettingsItem"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/card_settings_title"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="?attr/selectableItemBackground" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

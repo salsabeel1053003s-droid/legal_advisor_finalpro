@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Mid" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/neon_blue</item>
+        <item name="android:windowBackground">@color/dark_bg</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/text_gray</item>
+        <item name="colorSurface">@color/surface_dark</item>
+    </style>
+
+    <style name="Theme.Mid" parent="Base.Theme.Mid" />
+</resources>
