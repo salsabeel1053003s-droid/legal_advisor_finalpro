@@ -1,8 +1,10 @@
-package com.example.mid; // تأكد أن هذا هو اسم الباكج الخاص بمشروعك
+package com.example.mid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,18 +24,30 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // --- ربط عناصر كرت التعريف وتحديث البيانات ---
+        TextView tvUserName = findViewById(R.id.tvUserName);
+        TextView tvUserEmail = findViewById(R.id.tvUserEmail);
+        ImageButton btnEditProfileTop = findViewById(R.id.btnEditProfileTop);
 
+        // جلب البيانات المخزنة من SharedPreferences التي تم إنشاؤها في صفحة التسجيل
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String savedUsername = prefs.getString("username", "Anas Al-Ahmad");
+        String savedEmail = prefs.getString("email", "anas@example.com");
+
+        tvUserName.setText(savedUsername);
+        tvUserEmail.setText(savedEmail);
+
+        // --- ربط العناصر الأخرى ---
         RelativeLayout layoutAccountHeader = findViewById(R.id.layoutAccountHeader);
         CardView cardAccountDetails = findViewById(R.id.cardAccountDetails);
         ImageView imgAccountArrow = findViewById(R.id.imgAccountArrow);
-
         RelativeLayout btnNotificationPage = findViewById(R.id.btnNotificationPage);
         SwitchCompat switchDarkMode = findViewById(R.id.switchDarkMode);
-
         TextView btnLogout = findViewById(R.id.btnLogout);
         TextView settingChangePhoto = findViewById(R.id.settingChangePhoto);
         TextView settingEditName = findViewById(R.id.settingEditName);
 
+        // منطق القائمة المنسدلة (Account)
         layoutAccountHeader.setOnClickListener(v -> {
             if (!isAccountVisible) {
                 cardAccountDetails.setVisibility(View.VISIBLE);
@@ -46,6 +60,11 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        // زر التعديل في الكرت العلوي
+        btnEditProfileTop.setOnClickListener(v -> {
+            EditProfileDialog dialog = new EditProfileDialog();
+            dialog.show(getSupportFragmentManager(), "EditProfileDialog");
+        });
         btnNotificationPage.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, NotificationsActivity.class);
             startActivity(intent);
@@ -54,10 +73,8 @@ public class SettingsActivity extends AppCompatActivity {
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                Toast.makeText(this, "تم تفعيل الوضع الداكن", Toast.LENGTH_SHORT).show();
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                Toast.makeText(this, "تم تفعيل الوضع الفاتح", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -65,16 +82,10 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            finish(); // إغلاق صفحة الإعدادات
+            finish();
         });
 
-        settingChangePhoto.setOnClickListener(v -> {
-            Toast.makeText(this, "فتح الاستوديو لتغيير الصورة...", Toast.LENGTH_SHORT).show();
-            // يمكنك هنا إضافة كود فتح معرض الصور لاحقاً
-        });
-
-        settingEditName.setOnClickListener(v -> {
-            Toast.makeText(this, "تعديل الاسم المستعار...", Toast.LENGTH_SHORT).show();
-        });
+        settingChangePhoto.setOnClickListener(v -> Toast.makeText(this, "Opening Gallery...", Toast.LENGTH_SHORT).show());
+        settingEditName.setOnClickListener(v -> Toast.makeText(this, "Edit Nickname...", Toast.LENGTH_SHORT).show());
     }
 }

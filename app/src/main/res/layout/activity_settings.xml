@@ -15,11 +15,89 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_title"
+            android:text="Settings"
             android:textColor="@color/neon_blue"
             android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="25dp"/>
+
+        <RelativeLayout
+            android:id="@+id/userProfileCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/neon_card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="30dp">
+
+            <FrameLayout
+                android:id="@+id/avatarFrame"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/neon_circle_border">
+
+                <ImageView
+                    android:id="@+id/imgProfileAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:padding="15dp"
+                    app:tint="@color/neon_blue" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toEndOf="@id/avatarFrame"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anas Al-Ahmad"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="anas@example.com"
+                    android:textColor="#888888"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premium Member"
+                    android:textColor="@color/neon_blue"
+                    android:textSize="11sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="3dp"
+                    android:layout_marginTop="8dp"
+                    android:textStyle="bold"
+                    android:background="@drawable/neon_status_bg" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnEditProfileTop"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/neon_circle_border"
+                android:src="@android:drawable/ic_menu_edit"
+                app:tint="@color/neon_blue"
+                android:padding="10dp"
+                android:contentDescription="@null" />
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layoutAccountHeader"
@@ -28,8 +106,7 @@
             android:minHeight="48dp"
             android:clickable="true"
             android:focusable="true"
-            android:paddingVertical="8dp"
-            android:background="?attr/selectableItemBackground">
+            android:paddingVertical="8dp">
 
             <ImageView
                 android:id="@+id/imgAccountArrow"
@@ -38,16 +115,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:src="@android:drawable/arrow_down_float"
-                app:tint="@color/text_gray"
-                android:contentDescription="@null" />
+                app:tint="@color/text_gray" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/imgAccountArrow"
-                android:text="@string/account_section"
+                android:text="ACCOUNT"
                 android:textColor="@color/text_gray"
                 android:textSize="14sp"
                 android:textAllCaps="true" />
@@ -72,9 +146,7 @@
                     style="@style/SettingItemStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/edit_profile_photo"
+                    android:text="Edit Profile Photo"
                     app:drawableStartCompat="@android:drawable/ic_menu_camera" />
 
                 <View style="@style/SettingDividerStyle" />
@@ -84,9 +156,7 @@
                     style="@style/SettingItemStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/edit_username"
+                    android:text="Edit Username"
                     app:drawableStartCompat="@android:drawable/ic_menu_edit" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -94,7 +164,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/preferences_section"
+            android:text="PREFERENCES"
             android:textColor="@color/text_gray"
             android:textSize="14sp"
             android:textAllCaps="true"
@@ -116,28 +186,22 @@
                 <RelativeLayout
                     android:id="@+id/btnNotificationPage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="55dp"
-                    android:background="?attr/selectableItemBackground"
+                    android:layout_height="55dp"
                     android:paddingHorizontal="15dp">
 
                     <ImageView
-                        android:id="@+id/imgNotifIcon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@android:drawable/ic_popup_reminder"
-                        app:tint="@color/neon_blue"
-                        android:contentDescription="@null" />
+                        app:tint="@color/neon_blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/imgNotifIcon"
-                        android:text="@string/notifications_inbox"
+                        android:text="Notifications Inbox"
                         android:textColor="@color/white" />
                 </RelativeLayout>
 
@@ -145,8 +209,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="55dp"
+                    android:layout_height="55dp"
                     android:paddingHorizontal="15dp">
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -162,9 +225,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/switchDarkMode"
-                        android:text="@string/dark_mode"
+                        android:text="Dark Mode"
                         android:textColor="@color/white" />
                 </RelativeLayout>
             </LinearLayout>
@@ -175,11 +236,9 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/card_neon_border"
-            android:text="@string/logout_button"
+            android:text="Logout"
             android:textColor="#FF5252"
             android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:backgroundTint="#26FF5252" />

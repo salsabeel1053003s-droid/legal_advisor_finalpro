@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:layout_height="match_parent">
 
+    <!-- صورة الخلفية -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
@@ -14,12 +12,11 @@
         android:scaleType="centerCrop"
         android:contentDescription="@null" />
 
+    <!-- Overlay -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_overlay"
-        android:clickable="false"
-        android:focusable="false" />
+        android:background="@color/black_overlay" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,14 +26,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical"
+            android:gravity="center"
             android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_title"
+                android:text="Login"
                 android:textColor="@color/neon_blue"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -45,110 +42,114 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_subtitle"
+                android:text="Please login to continue"
                 android:textColor="@color/text_gray"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:gravity="center" />
 
+            <!-- CardView -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="15dp"
-                app:cardMaxElevation="20dp"
                 app:cardUseCompatPadding="true"
                 android:outlineAmbientShadowColor="@color/neon_blue"
-                android:outlineSpotShadowColor="@color/neon_blue"
-                tools:targetApi="p">
+                android:outlineSpotShadowColor="@color/neon_blue">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/card_neon_border"
                     android:orientation="vertical"
-                    android:padding="25dp">
+                    android:padding="20dp">
 
                     <EditText
                         android:id="@+id/etUsername"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:background="@drawable/edit_text_rounded"
-                        android:hint="@string/hint_username"
+                        android:layout_height="50dp"
+                        android:hint="Username"
                         android:textColorHint="@color/text_gray"
                         android:textColor="@color/white"
                         android:paddingStart="15dp"
                         android:paddingEnd="15dp"
-                        android:inputType="textPersonName"
-                        android:autofillHints="username"
+                        android:background="@drawable/edit_text_rounded"
                         android:drawableStart="@android:drawable/ic_menu_myplaces"
-                        android:drawablePadding="10dp" />
+                        android:drawablePadding="10dp"
+                        android:inputType="textPersonName" />
 
                     <EditText
                         android:id="@+id/etPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/edit_text_rounded"
-                        android:hint="@string/hint_password"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="12dp"
+                        android:hint="Password"
                         android:textColorHint="@color/text_gray"
                         android:textColor="@color/white"
-                        android:inputType="textPassword"
-                        android:autofillHints="password"
                         android:paddingStart="15dp"
                         android:paddingEnd="15dp"
+                        android:background="@drawable/edit_text_rounded"
                         android:drawableStart="@android:drawable/ic_lock_idle_lock"
-                        android:drawablePadding="10dp" />
+                        android:drawablePadding="10dp"
+                        android:inputType="textPassword" />
 
                     <Button
                         android:id="@+id/btnLogin"
                         android:layout_width="180dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="25dp"
                         android:layout_gravity="center"
-                        android:text="@string/btn_login"
+                        android:text="Login"
                         android:backgroundTint="@color/neon_blue"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:textAllCaps="false" />
 
+                    <CheckBox
+                        android:id="@+id/cbRemember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remember Me"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="10dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- روابط التسجيل وكلمة المرور -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="24dp"
-                android:paddingBottom="20dp">
+                android:layout_marginTop="16dp">
 
                 <TextView
                     android:id="@+id/tvRegister"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/create_account"
+                    android:text="Don't have an account? Register"
                     android:textColor="@color/neon_blue"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:gravity="start"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"/>
 
                 <TextView
                     android:id="@+id/tvForgot"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/forgot_password"
+                    android:text="Forgot Password?"
                     android:textColor="@color/text_gray"
                     android:textSize="14sp"
                     android:gravity="end"
                     android:clickable="true"
-                    android:focusable="true" />
-
+                    android:focusable="true"/>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

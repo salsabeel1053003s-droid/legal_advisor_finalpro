@@ -5,22 +5,22 @@
     android:layout_height="match_parent"
     android:background="@color/dark_bg">
 
-    <!-- Background Image -->
+    <!-- خلفية شفافه -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/login_background"
         android:scaleType="centerCrop"
+        android:alpha="0.2"
         android:contentDescription="@null" />
 
-    <!-- Dark Overlay -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_overlay" />
+        android:background="@color/black_overlay"
+        android:alpha="0.5" />
 
-    <!-- Main Scroll Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +32,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Header -->
+            <!-- العنوان والقائمة -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,14 +42,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@id/btnMenu"
                     android:layout_centerVertical="true"
                     android:text="@string/header_title"
                     android:textColor="@color/neon_blue"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:letterSpacing="0.2" />
 
                 <ImageButton
@@ -57,13 +54,12 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_alignParentEnd="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/neon_card_bg"
                     android:src="@android:drawable/ic_menu_more"
-                    app:tint="@color/neon_blue"
-                    android:contentDescription="@string/header_title" />
+                    app:tint="@color/neon_blue" />
             </RelativeLayout>
 
-            <!-- Welcome Text -->
+            <!-- الترحيب والتاريخ -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,196 +84,356 @@
                 android:layout_marginBottom="30dp"
                 android:text="@string/loading_date" />
 
-            <!-- Grid Cards -->
-            <GridLayout
+            <!-- كروت الشبكة -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:alignmentMode="alignMargins">
+                android:orientation="vertical">
 
-                <!-- Reusable Card Template -->
-
+                <!-- AI Advisor -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardAI"
-                    style="@style/NeonCardStyle">
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#1A1A1A"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp">
 
-                        <ImageView
-                            android:src="@android:drawable/stat_notify_chat"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/iconAI"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="@color/neon_blue"
+                            app:cardCornerRadius="14dp">
 
-                        <TextView
-                            android:text="@string/card_ai_title"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/stat_notify_chat"
+                                app:tint="@color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iconAI"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AI Advisor"
+                                android:textColor="@color/neon_blue"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Smart legal assistance"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Human Advisor -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardHuman"
-                    style="@style/NeonCardStyle">
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#1A1A1A"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp">
 
-                        <ImageView
-                            android:src="@android:drawable/ic_menu_myplaces"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/iconHuman"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="@color/neon_blue"
+                            app:cardCornerRadius="14dp">
 
-                        <TextView
-                            android:text="@string/card_human_title"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_myplaces"
+                                app:tint="@color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iconHuman"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Human Advisor"
+                                android:textColor="@color/neon_blue"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Connect with professionals"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Laws -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardFavorites"
-                    style="@style/NeonCardStyle">
+                    android:id="@+id/cardLaws"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#1A1A1A"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp">
 
-                        <ImageView
-                            android:src="@android:drawable/btn_star_big_on"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/iconLaws"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="#FFD700"
+                            app:cardCornerRadius="28dp">
 
-                        <TextView
-                            android:text="@string/menu_favorites"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_agenda" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iconLaws"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Laws"
+                                android:textColor="#FFD700"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Browse laws , articles"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Consultations -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardNotifications"
-                    style="@style/NeonCardStyle">
+                    android:id="@+id/cardConsult"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#1A1A1A"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp">
 
-                        <ImageView
-                            android:src="@android:drawable/ic_popup_reminder"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/iconConsult"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="@color/neon_blue"
+                            app:cardCornerRadius="14dp">
 
-                        <TextView
-                            android:text="@string/menu_notifications"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_help"
+                                app:tint="@color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iconConsult"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Consultations"
+                                android:textColor="@color/neon_blue"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View your history"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Contact Us -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardContact"
-                    style="@style/NeonCardStyle">
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#1A1A1A"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp">
 
-                        <ImageView
-                            android:src="@android:drawable/ic_menu_call"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/iconContact"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="@color/neon_blue"
+                            app:cardCornerRadius="14dp">
 
-                        <TextView
-                            android:text="@string/card_contact_title"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_call"
+                                app:tint="@color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/iconContact"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contact Us"
+                                android:textColor="@color/neon_blue"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Get support anytime"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardSettings"
-                    style="@style/NeonCardStyle">
-
-                    <LinearLayout
-                        style="@style/NeonCardContent"
-                        android:background="@drawable/neon_card_bg">
-
-                        <ImageView
-                            android:src="@android:drawable/ic_menu_manage"
-                            style="@style/NeonIconStyle"
-                            android:contentDescription="@null" />
-
-                        <TextView
-                            android:text="@string/card_settings_title"
-                            style="@style/NeonTextStyle" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-            </GridLayout>
-
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!-- Menu Overlay -->
+    <!-- قائمة جانبية للتعتيم -->
     <View
         android:id="@+id/menuOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#AA000000"
-        android:visibility="gone"
-        android:clickable="true"
-        android:focusable="true" />
+        android:background="#88000000"
+        android:visibility="gone" />
 
-    <!-- Popup Menu -->
     <androidx.cardview.widget.CardView
         android:id="@+id/menuContainer"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:visibility="gone"
-        app:cardBackgroundColor="@color/card_bg"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="20dp">
+        app:cardBackgroundColor="#1C1C1C"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp">
 
+        <!-- عناصر القائمة الجانبية يمكن إضافتها هنا -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/menuFavoritesItem"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/menu_favorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorites"
                 android:textColor="@color/white"
-                android:gravity="center_vertical"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:background="?attr/selectableItemBackground" />
+                android:textSize="16sp"
+                android:padding="8dp" />
 
             <TextView
                 android:id="@+id/menuNotificationsItem"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/menu_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notifications"
                 android:textColor="@color/white"
-                android:gravity="center_vertical"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:background="?attr/selectableItemBackground" />
+                android:textSize="16sp"
+                android:padding="8dp" />
 
             <TextView
                 android:id="@+id/menuSettingsItem"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/card_settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
                 android:textColor="@color/white"
-                android:gravity="center_vertical"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:background="?attr/selectableItemBackground" />
-
+                android:textSize="16sp"
+                android:padding="8dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

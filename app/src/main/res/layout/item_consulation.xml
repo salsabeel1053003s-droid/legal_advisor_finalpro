@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/surface_dark"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#1AFFFFFF"
+    android:layoutDirection="ltr"> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textColor="@color/neon_blue"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="2026-03-04"
+            android:textColor="@color/text_gray"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_question_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:lineSpacingExtra="4dp"
+        android:text="The user's legal question preview will appear here..."
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#1AFFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_delete_24"
+            app:tint="#FF5252" />
+
+        <ImageButton
+            android:id="@+id/btn_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_visibility_24"
+            app:tint="@color/neon_blue" />
+
+    </LinearLayout>
+</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -6,49 +6,52 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AIActivity extends AppCompatActivity {
 
-    private EditText inputEditText;
-    private ImageButton sendButton;
-    private TextView aiTitle;
+    // تعريف العناصر
+    private EditText userInquiryInput;
+    private ImageButton btnSendInquiry;
+    private TextView aiResponseText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ai_activity);
 
-        aiTitle = findViewById(R.id.aiTitle);
-        inputEditText = findViewById(R.id.inputArea).findViewById(android.R.id.edit); // إذا لم يكن له ID مباشر
-        sendButton = findViewById(R.id.inputArea).findViewWithTag("send_button"); // أو يفضل إضافة ID للـ EditText والـ Button في الـ XML
+        // 1. ربط العناصر بالـ IDs الموجودة في ملف الـ XML
+        userInquiryInput = findViewById(R.id.userInquiryInput);
+        btnSendInquiry = findViewById(R.id.btnSendInquiry);
+        aiResponseText = findViewById(R.id.aiResponseText);
 
-        ImageButton sendBtn = findImageButtonInLayout();
-        if (sendBtn != null) {
-            sendBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sendMessage();
-                }
-            });
-        }
-    }
-
-    private void sendMessage() {
-        Toast.makeText(this, "جاري معالجة استشارتك القانونية...", Toast.LENGTH_SHORT).show();
-    }
-
-    private ImageButton findImageButtonInLayout() {
-        View inputArea = findViewById(R.id.inputArea);
-        if (inputArea instanceof android.widget.LinearLayout) {
-            android.widget.LinearLayout layout = (android.widget.LinearLayout) inputArea;
-            for (int i = 0; i < layout.getChildCount(); i++) {
-                if (layout.getChildAt(i) instanceof ImageButton) {
-                    return (ImageButton) layout.getChildAt(i);
-                }
+        // 2. إعداد حدث النقر للزر
+        btnSendInquiry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performSendMessage();
             }
+        });
+    }
+
+    private void performSendMessage() {
+        // الحصول على النص من حقل الإدخال
+        String userText = userInquiryInput.getText().toString().trim();
+
+        if (!userText.isEmpty()) {
+            // تحديث واجهة المحادثة بنص المستخدم
+            aiResponseText.setText("أنت: " + userText + "\n\nجاري معالجة استشارتك... ⚖️");
+
+            // مسح حقل الإدخال بعد الإرسال
+            userInquiryInput.setText("");
+
+            // (اختياري) محاكاة رد من النظام بعد ثانية واحدة
+            new android.os.Handler().postDelayed(() -> {
+                aiResponseText.append("\n\nالمستشار: شكراً لتواصلك. بناءً على الأنظمة القانونية، ننصحك بـ...");
+            }, 1500);
+
+        } else {
+            Toast.makeText(this, "يرجى كتابة سؤالك أولاً", Toast.LENGTH_SHORT).show();
         }
-        return null;
     }
 }

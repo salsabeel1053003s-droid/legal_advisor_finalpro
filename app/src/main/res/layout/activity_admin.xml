@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg"
+    android:layoutDirection="ltr"> <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_bg"
+    app:elevation="0dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/baseline_menu_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Admin Control Panel"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/baseline_person_24"
+                app:tint="@color/white" />
+        </RelativeLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardBackgroundColor="@color/neon_blue"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/txt_admin_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello Admin 👋"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_admin_name"
+                        android:layout_marginTop="8dp"
+                        android:alpha="0.9"
+                        android:text="Comprehensive Legal Control System"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <ImageView
+
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:tint="@color/white"
+                        android:alpha="0.25"
+                        android:src="@drawable/gavel_24" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_columnWeight="1"
+                    app:cardBackgroundColor="@color/surface_dark"
+                    app:cardCornerRadius="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView
+                            android:id="@+id/count_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/neon_blue"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.7"
+                            android:text="Total Users"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_columnWeight="1"
+                    app:cardBackgroundColor="@color/surface_dark"
+                    app:cardCornerRadius="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView
+                            android:id="@+id/count_laws"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/neon_blue"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.7"
+                            android:text="Active Laws"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:text="Quick Management"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_manage_laws"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:layout_columnWeight="1"
+                    android:text="Manage Laws"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/neon_blue" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_manage_cats"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:layout_columnWeight="1"
+                    android:text="Categories"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/neon_blue" />
+            </GridLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/surface_dark"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/links"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="Quick Navigation"
+                        android:textColor="@color/neon_blue"
+                        android:textStyle="bold"
+                        />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_messages"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="View Incoming Messages"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/email_24"
+                        app:iconTint="@color/neon_blue" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_all_laws"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="Comprehensive Laws Registry"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/gavel_24"
+                        app:iconTint="@color/neon_blue" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_all_cats"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="All Case Classifications"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/label_24"
+                        app:iconTint="@color/neon_blue" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_consultations"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="Legal Consultation Center"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/menu_book_24"
+                        app:iconTint="@color/neon_blue" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -44,6 +44,7 @@
 
     <string name="title_notifications">Notifications</string>
     <string name="desc_back">Back</string>
+    <string name="back">Back</string>
     <string name="desc_notification_settings">Notification Settings</string>
     <string name="notify_new_update">New Update Available</string>
     <string name="notify_update_desc">Update the app to get the latest AI legal features.</string>

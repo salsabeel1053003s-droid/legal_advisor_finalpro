@@ -14,28 +14,89 @@
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"/>
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="true"/>
 
-        <activity android:name=".AIActivity" />
-        <activity android:name=".FavoritesActivity" />
-        <activity android:name=".NotificationsActivity" />
-        <activity android:name=".ContactActivity" />
-        <activity android:name=".HumanActivity" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="true"/>
 
-        <activity android:name=".SettingsActivity" android:configChanges="uiMode" />
+        <activity
+            android:name=".AIActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ContactActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".HumanActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:configChanges="uiMode"
+            android:exported="true"/>
+
+        <activity
+            android:name=".LawsActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ConsultationsActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".AddCategoryActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".AddLawActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="true"/>
+
+        <activity
+            android:name=".AllCategoriesActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".AllLawsViewActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".CategoriesActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".MessagesActivity"
+            android:exported="true"/>
 
     </application>
+
 </manifest>

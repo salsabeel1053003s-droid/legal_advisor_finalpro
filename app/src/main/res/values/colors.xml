@@ -15,4 +15,8 @@
     <color name="light_bg">#F8F9FA</color>
     <color name="surface_light">#FFFFFF</color>
     <color name="text_dark">#212121</color>
+
+
+    <color name="primary_dark">#1A2B48</color>
+    <color name="gold">#FFD700</color>
 </resources>
