@@ -4,16 +4,20 @@ public class MessageModel {
     private String senderId;
     private String messageText;
     private long timestamp;
+    private String email;
+    private String phone;
 
-    // مشيد فارغ (ضروري جداً إذا كنت تستخدم Firebase أو مكتبات Parsing)
+    // Empty constructor (ضروري عند التعامل مع Firebase)
     public MessageModel() {
     }
 
-    // مشيد لتمرير البيانات عند إنشاء رسالة جديدة
-    public MessageModel(String senderId, String messageText, long timestamp) {
+    // Full constructor
+    public MessageModel(String senderId, String messageText, long timestamp, String email, String phone) {
         this.senderId = senderId;
         this.messageText = messageText;
         this.timestamp = timestamp;
+        this.email = email;
+        this.phone = phone;
     }
 
     // Getters and Setters
@@ -39,5 +43,21 @@ public class MessageModel {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
