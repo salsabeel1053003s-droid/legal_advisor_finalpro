@@ -5,18 +5,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ConsultationsAdapter extends RecyclerView.Adapter<ConsultationsAdapter.ConsViewHolder> {
 
     private List<ConsultationModel> consList;
+    private OnConsultationClickListener listener;
 
-    public ConsultationsAdapter(List<ConsultationModel> consList) {
+    public ConsultationsAdapter(List<ConsultationModel> consList, OnConsultationClickListener listener) {
         this.consList = consList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -30,34 +30,62 @@ public class ConsultationsAdapter extends RecyclerView.Adapter<ConsultationsAdap
     public void onBindViewHolder(@NonNull ConsViewHolder holder, int position) {
         ConsultationModel model = consList.get(position);
 
-        // Binding Data
-        holder.tvName.setText(model.name);
-        holder.tvDate.setText(model.date);
-        holder.tvQuestion.setText(model.content);
+        if (model != null) {
+            holder.tvName.setText(model.getName());
+            holder.tvDate.setText(model.getDate());
+            holder.tvQuestion.setText(model.getContent());
+        }
 
-        holder.btnView.setOnClickListener(v -> {
-            new AlertDialog.Builder(v.getContext())
-                    .setTitle("Consultation Details")
-                    .setMessage("From: " + model.name + "\n\n" + "Question:\n" + model.content)
-                    .setPositiveButton("Close", null)
-                    .show();
-        });
+        // عرض التفاصيل
+        if (holder.btnView != null) {
+            holder.btnView.setOnClickListener(v -> {
+                if (listener != null && model != null) {
+                    listener.onViewClick(model);
+                }
+            });
+        }
 
-        // Delete Action
-        holder.btnDelete.setOnClickListener(v -> {
+        // حذف الاستشارة
+        if (holder.btnDelete != null) {
+            holder.btnDelete.setOnClickListener(v -> {
+                int currentPos = holder.getAdapterPosition();
+                if (currentPos != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onDeleteClick(currentPos);
+                }
+            });
+        }
+
+        // الضغط المطول أو النقر لتحديث حالة الاستشارة
+        holder.itemView.setOnLongClickListener(v -> {
             int currentPos = holder.getAdapterPosition();
-            if (currentPos != RecyclerView.NO_POSITION) {
-                consList.remove(currentPos);
-                notifyItemRemoved(currentPos);
-                notifyItemRangeChanged(currentPos, consList.size());
-                Toast.makeText(v.getContext(), "Consultation deleted successfully", Toast.LENGTH_SHORT).show();
+            if (currentPos != RecyclerView.NO_POSITION && listener != null && model != null) {
+                listener.onStatusUpdateClick(currentPos, model);
+                return true;
             }
+            return false;
         });
     }
 
     @Override
     public int getItemCount() {
         return (consList != null) ? consList.size() : 0;
+    }
+
+    // دالة حذف عنصر من القائمة
+    public void removeItem(int position) {
+        if (position >= 0 && position < consList.size()) {
+            consList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, consList.size());
+        }
+    }
+
+    // دالة تحديث عنصر في القائمة
+    public void updateItem(int position, ConsultationModel updatedModel) {
+        if (position >= 0 && position < consList.size()) {
+            consList.set(position, updatedModel);
+            notifyItemChanged(position);
+        }
     }
 
     public static class ConsViewHolder extends RecyclerView.ViewHolder {
@@ -71,7 +99,6 @@ public class ConsultationsAdapter extends RecyclerView.Adapter<ConsultationsAdap
             tvQuestion = itemView.findViewById(R.id.tv_question_preview);
             btnDelete = itemView.findViewById(R.id.btn_delete);
             btnView = itemView.findViewById(R.id.btn_view);
-
         }
     }
 

@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_bg"
-    android:layoutDirection="ltr"> <com.google.android.material.appbar.MaterialToolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/surface_dark"
-    app:navigationIcon="@drawable/baseline_arrow_back_24"
-    app:title="Consultations Management"
-    app:titleTextColor="@color/white" />
+    android:layoutDirection="ltr">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surface_dark"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="Consultations Management"
+        app:titleTextColor="@color/white" />
 
     <LinearLayout
         android:id="@+id/search_bar"
@@ -38,6 +40,7 @@
 
         <ImageButton
             android:id="@+id/btn_export"
+            android:importantForAccessibility="no"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"

@@ -85,4 +85,16 @@
     <string name="error_settings">Settings page not found</string>
     <string name="msg_dark_mode_on">Dark Mode Enabled</string>
     <string name="msg_dark_mode_off">Light Mode Enabled</string>
+
+    <!-- نصوص ملف item_notification.xml -->
+    <string name="default_notification_title">عنوان الإشعار</string>
+    <string name="default_notification_time">10:30 ص</string>
+    <string name="default_notification_message">تفاصيل الإشعار تظهر هنا...</string>
+    <string name="desc_delete_notification">Delete Notification</string>
+
+    <!-- نصوص ملف item_expert.xml -->
+    <string name="default_expert_name">اسم الخبير</string>
+    <string name="default_expert_specialty">التخصص</string>
+    <string name="btn_call">اتصال</string>
+    <string name="desc_delete_expert">Delete Expert</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.mid;
+package com.example.mid; // قم بتغيير اسم الحزمة ليتوافق مع مشروعك
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,64 +12,60 @@ import java.util.List;
 
 public class MessagesActivity extends AppCompatActivity {
 
-    private RecyclerView rvMessages;
-    private LinearLayout layoutEmpty;
+    private MaterialToolbar toolbarMessages;
+    private RecyclerView rvContactMessages;
+    private LinearLayout layoutEmptyMessages;
+
+    private List<MessageModel> messageList;
+    private MessagesAdapter messagesAdapter; // الـ Adapter الخاص بك لعرض عناصر الرسائل
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        setContentView(R.layout.activity_messages); // تأكد من اسم ملف XML الخاص بالواجهة
 
-        initViews();
+        // 1. ربط عناصر الواجهة بنفس IDs المحددة في الـ XML
+        toolbarMessages = findViewById(R.id.toolbar_messages);
+        rvContactMessages = findViewById(R.id.rv_contact_messages);
+        layoutEmptyMessages = findViewById(R.id.layout_empty_messages);
 
-        // Setup RecyclerView
-        rvMessages.setLayoutManager(new LinearLayoutManager(this));
+        // 2. إعداد الـ Toolbar وزر الرجوع
+        toolbarMessages.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // إغلاق الشاشة عند الضغط على سهم الرجوع
+            }
+        });
 
-        // Load Data
+        // 3. تهيئة القائمة والـ Adapter
+        messageList = new ArrayList<>();
+        messagesAdapter = new MessagesAdapter(messageList);
+
+        // 4. إعداد الـ RecyclerView
+        rvContactMessages.setLayoutManager(new LinearLayoutManager(this));
+        rvContactMessages.setAdapter(messagesAdapter);
+
+        // 5. تحميل البيانات (يمكنك ربطها مع Firebase أو API)
         loadMessages();
     }
 
-    private void initViews() {
-        rvMessages = findViewById(R.id.rv_contact_messages);
-        layoutEmpty = findViewById(R.id.layout_empty_messages);
-        MaterialToolbar toolbar = findViewById(R.id.toolbar_messages);
-
-        // Setup Toolbar
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Contact Messages");
-        }
-        toolbar.setNavigationOnClickListener(v -> finish());
-    }
-
     private void loadMessages() {
-        List<MessageModel> list = new ArrayList<>();
+        // مثال: جلب البيانات (أضف أسلوب الجلب الخاص بك هنا)
+        // messageList.add(new MessageModel("1", "Hello, I need help", System.currentTimeMillis()));
 
-        list.add(new MessageModel("Ahmed Mahmoud", "2026-02-27", "ahmed@mail.com", "0599123456", "I would like to inquire about the official working hours."));
-        list.add(new MessageModel("Laila Hassan", "2026-02-26", "laila@mail.com", "0599888777", "Thank you for the excellent service and legal assistance."));
-        list.add(new MessageModel("John Doe", "2026-03-01", "john.d@mail.com", "0599000111", "Is there a consultation available for labor law?"));
-
-        if (list.isEmpty()) {
-            layoutEmpty.setVisibility(View.VISIBLE);
-            rvMessages.setVisibility(View.GONE);
-        } else {
-            layoutEmpty.setVisibility(View.GONE);
-            rvMessages.setVisibility(View.VISIBLE);
-
-            MessagesAdapter adapter = new MessagesAdapter(list);
-            rvMessages.setAdapter(adapter);
-        }
+        // التتحكم في إظهار أو إخفاء واجهة "لا توجد رسائل"
+        checkEmptyState();
     }
-}
 
-class MessageModel {
-    String name, date, email, phone, content;
-
-    public MessageModel(String name, String date, String email, String phone, String content) {
-        this.name = name;
-        this.date = date;
-        this.email = email;
-        this.phone = phone;
-        this.content = content;
+    // دالة لتحديث الواجهة في حال كانت القائمة فارغة أو تحتوي على بيانات
+    private void checkEmptyState() {
+        if (messageList.isEmpty()) {
+            layoutEmptyMessages.setVisibility(View.VISIBLE);
+            rvContactMessages.setVisibility(View.GONE);
+        } else {
+            layoutEmptyMessages.setVisibility(View.GONE);
+            rvContactMessages.setVisibility(View.VISIBLE);
+            messagesAdapter.notifyDataSetChanged();
+        }
     }
 }

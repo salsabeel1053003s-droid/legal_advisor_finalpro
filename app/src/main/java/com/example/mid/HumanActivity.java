@@ -3,31 +3,51 @@ package com.example.mid;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.List;
+import com.example.mid.R;
 
-public class HumanActivity extends AppCompatActivity {
+public class HumanActivity extends AppCompatActivity implements OnExpertActionListener {
+
+    private RecyclerView recyclerView;
+    private ExpertsAdapter adapter;
+    private List<Expert> expertList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.human_activity);
 
-        ImageButton btnBack = findViewById(R.id.btnBackHuman);
-        btnBack.setOnClickListener(v -> finish());
+        recyclerView = findViewById(R.id.rv_experts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        setupCallButton(R.id.btnCallExpert1, "111222333");
-        setupCallButton(R.id.btnCallExpert2, "444555666");
-        setupCallButton(R.id.btnCallExpert3, "777888999");
+        expertList = new ArrayList<>();
+
+        adapter = new ExpertsAdapter(this, expertList, this);
+        recyclerView.setAdapter(adapter);
     }
 
-    private void setupCallButton(int buttonId, String phoneNumber) {
-        Button button = findViewById(buttonId);
-        button.setOnClickListener(v -> {
+    @Override
+    public void OnCallClick(Expert expert) {
+        if (expert != null && expert.getPhoneNumber() != null) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + phoneNumber));
+            intent.setData(Uri.parse("tel:" + expert.getPhoneNumber()));
             startActivity(intent);
-        });
+        }
+    }
+
+    @Override
+    public void OnDeleteClick(int position) {
+        adapter.removeItem(position);
+        Toast.makeText(this, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnUpdateClick(int position, Expert expert) {
+        Toast.makeText(this, "تعديل العنصر في الموقع: " + position, Toast.LENGTH_SHORT).show();
     }
 }

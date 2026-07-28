@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="#1AFFFFFF"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    tools:ignore="SpellCheckingInspection">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_rounded"
+        android:padding="16dp">
+
+        <!-- معلومات الخبير -->
+        <LinearLayout
+            android:id="@+id/layout_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/layout_actions"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_expert_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_expert_name"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_expert_specialty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/default_expert_specialty"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- الأزرار -->
+        <LinearLayout
+            android:id="@+id/layout_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_call_expert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="88dp"
+                android:minHeight="48dp"
+                android:backgroundTint="@color/neon_blue"
+                android:text="@string/btn_call"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_delete_expert"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/desc_delete_expert"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/ic_menu_delete"
+                app:tint="#FF5252" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
